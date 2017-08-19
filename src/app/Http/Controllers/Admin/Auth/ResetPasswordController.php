@@ -36,4 +36,21 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('admin.guest');
     }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        return view('admin.auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
+    }
+
+    public function broker()
+    {
+        return \Password::broker('admins');
+    }
+
+    protected function guard()
+    {
+        return \Auth::guard('admin');
+    }
 }

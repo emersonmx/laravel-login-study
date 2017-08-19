@@ -25,7 +25,10 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin';
+    protected function redirectTo()
+    {
+        return '/admin';
+    }
 
     /**
      * Create a new controller instance.
@@ -34,6 +37,16 @@ class LoginController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('admin.guest')->except('admin.logout');
+        $this->middleware('admin.guest')->except('logout');
+    }
+
+    public function showLoginForm()
+    {
+        return view('admin.auth.login');
+    }
+
+    protected function guard()
+    {
+        return \Auth::guard('admin');
     }
 }
