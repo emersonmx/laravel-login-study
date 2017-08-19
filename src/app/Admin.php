@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\Admin\ResetPassword as AdminResetPasswordNotification;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -30,6 +31,6 @@ class Admin extends Authenticatable
 
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new ResetPasswordNotification($token));
+        $this->notify(new AdminResetPasswordNotification($token));
     }
 }

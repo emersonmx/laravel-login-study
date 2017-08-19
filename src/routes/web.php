@@ -24,6 +24,9 @@ Route::prefix('admin')->namespace('Admin')->group(function() {
     $this->post('login', 'Auth\LoginController@login');
     $this->post('logout', 'Auth\LoginController@logout')->name('admin.logout');
 
+    $this->get('register', 'Auth\RegisterController@showRegistrationForm')->name('admin.register');
+    $this->post('register', 'Auth\RegisterController@register');
+
     $this->get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm')->name('admin.password.request');
     $this->post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('admin.password.email');
     $this->get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('admin.password.reset');

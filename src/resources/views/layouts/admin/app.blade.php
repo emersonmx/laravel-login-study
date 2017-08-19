@@ -64,6 +64,7 @@
                             </li>
                         @else
                             <li><a href="{{ route('admin.login') }}">Login</a></li>
+                            <li><a href="{{ route('admin.register') }}">Register</a></li>
                         @endauth
                     </ul>
                 </div>
