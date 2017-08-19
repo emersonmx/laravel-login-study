@@ -5,7 +5,7 @@ namespace App\Http\Middleware\Admin;
 use Closure;
 use Illuminate\Support\Facades\Auth;
 
-class RedirectIfNotAuthenticated
+class Authenticate
 {
     /**
      * Handle an incoming request.
@@ -15,7 +15,7 @@ class RedirectIfNotAuthenticated
      * @param  string|null $guard
      * @return mixed
      */
-    public function handle($request, Closure $next, $guard = 'admin')
+    public function handle($request, Closure $next, $guard = 'web_admin')
     {
         if (!Auth::guard($guard)->check()) {
             return redirect()->route('admin.login');
